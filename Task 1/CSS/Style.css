@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@800&family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;500;600;700;800&display=swap');
+
 
 * {
     margin: 0;
@@ -47,7 +48,6 @@
 
 .hero {
 
-    min-width: 60vh;
     background-image: url(../Assets/bg.jpeg);
     background-size: cover;
     display: flex;
@@ -60,22 +60,24 @@
 
 .hero svg {
     max-width: 80px;
-    margin: 10px 50px;
+    margin: 0px 0px 25px 55px;
     fill: white;
 }
 
 .hero p {
-    max-width: 40%;
-    margin: 20px 50px;
-    font-size: 25px;
+
+    margin: 0px 1346px 25px 60px;
+    font-size: 16px;
     font-family: 'Open Sans', sans-serif;
 }
 
 .hero h3 {
 
-    margin: 10px 50px 150px;
-    font-size: 20px;
+    margin: 0px 0px 150px 55px;
+    font-size: 16px;
+    font-weight: 700;
     font-family: 'Open Sans', sans-serif;
+
 }
 
 .sec1 {
@@ -89,14 +91,16 @@
 .sec1 svg {
 
     fill: rgb(255, 159, 8);
-    width: 300px
+    width: 300px;
+    margin: 0px 0px 40px 40px;
 }
 
 .sec1 p {
 
-    font-size: 80px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    font-size: 48px;
+    margin: 0px 650px 40px 40px;
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
     color: white;
 
 }
@@ -104,15 +108,18 @@
 
 
 .btn {
+
+    border: none;
     background-color: rgb(255, 159, 8);
-    border: 0.5px;
-    border-color: black;
-    color: black;
-    padding: 15px 30px;
+    color: rgb(2, 30, 70);
+    padding: 14px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 25px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin: 0px 0px 0px 40px;
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
 }
@@ -127,31 +134,39 @@
 
 .sec2 h1 {
 
-    font-size: 80px;
     text-align: left;
-    margin-left: 40px;
+    margin: 0px 0px 40px 60px;
     color: white;
-    margin-bottom: 60px;
-    
+    font-family: Merriweather, serif;
+    font-size: 48px;
+    font-weight: 700;
+
 
 }
 
 .sec2-div1 {
 
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-family: 'Open Sans', sans-serif;
-
+    margin: 0px 300px 0px 300px
 }
 
 .sec2-div2 {
 
-    width: 30%;
-    padding: 40px 30px;
+    width: 25%;
+    text-align: left;
+    padding: 40px;
 }
 
 .sec2-div2 h2 {
 
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-family: "Open Sans", sans-serif;
     color: rgb(255, 159, 8);
     margin-bottom: 20px;
 
@@ -159,14 +174,16 @@
 
 .sec2-div2 p {
 
-    color: white;
-    font-size: 20px;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(153, 153, 153);
 
 }
 
 .sec2-div3 {
 
-    width: 30%;
+    width: 25%;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,6 +191,8 @@
 
 .img {
 
+    display: flex;
+    align-items: center;
     position: relative;
     width: 300px;
     height: 300px;
@@ -187,13 +206,17 @@
 }
 
 .sec2-div4 {
-    width: 30%;
-    padding: 40px 30px;
+    width: 25%;
+    padding: 40px;
+    text-align: left;
 }
 
 .sec2-div4 h2 {
 
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-family: "Open Sans", sans-serif;
     color: rgb(255, 159, 8);
     margin-bottom: 20px;
 
@@ -201,10 +224,15 @@
 
 .sec2-div4 p {
 
-    color: white;
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(153, 153, 153);
 
+}
+
+.btn-elegance {
+    margin: 0%;
+    margin-top: 20px;
 }
 
 .sec3 {
@@ -212,26 +240,28 @@
     min-width: 100vw;
     min-height: 500px;
     display: flex;
-    justify-content: space-between;
-    background-color: rgb(2, 30, 70);
+    background-color: rgb(255, 159, 8);
 
 }
 
 .team {
 
-    min-width: 100vw;
+    min-width: 96vw;
     min-height: 500px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     background-color: rgb(2, 30, 70);
-
+    margin-right: 80px;
+    align-content: center;
+    justify-content: center;
 }
 
-.sec3_1 {
 
-    width: 40%;
-    padding-left: 100px;
-    text-align: center;
+.team-1 {
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
 }
 
@@ -247,37 +277,51 @@
 .employee-detail {
     text-align: center;
     color: white;
-    padding: inherit;
+    text-align: center;
+    color: white;
+    width: 250px;
 }
 
 .employee-detail h2 {
 
-    color: rgb(255, 159, 8);
     margin: 10px 10px;
-    
+    font-family: Merriweather, serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
 
 }
 
 .employee-detail h3 {
 
-    font-size: 15px;
     margin: 10px 10px;
+    font-size: 16px;
+    font-weight: 700;
     font-family: 'Open Sans', sans-serif;
+    color: rgb(241, 197, 14);
 
 }
 
 .employee-detail p {
 
     margin: 10px 10px;
+    font-size: 14px;
+    font-style: italic;
     font-family: 'Open Sans', sans-serif;
 
+}
+
+.social-icon {
+    margin: 0px;
+    padding: 0px;
 }
 
 .employee-detail svg {
 
     fill: white;
-    width: 40px;
-    margin: 10px;
+    width: 60px;
+    padding: 0px;
+    margin: 0px;
 
 }
 
@@ -285,12 +329,6 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-}
-
-.bar {
-    width: 80px;
-    height: 1140px;
-    background-color: rgb(255, 159, 8);
 }
 
 .btn2 {
@@ -310,40 +348,46 @@
 .ourteam {
 
     text-align: left;
+    margin-left: 100px;
+
 
 }
 
 .ourteam h1 {
 
-    font-size: 50px;
+    font-size: 48px;
+    font-weight: 700;
     color: white;
     padding: 20px;
     text-align: left;
+    font-family: Merriweather, serif;
 
 }
 
 .ourteam p {
 
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     padding: 20px;
     text-align: left;
     font-family: 'Open Sans', sans-serif;
+    width: 600px;
 
 }
 
 .call-now {
 
     text-align: center;
-    background-color: rgb(255, 159, 8);
-    border: 0.5px;
-    border-color: black;
-    color: black;
-    padding: 15px 30px;
+    background-color: rgb(255, 161, 0);
+    color: rgb(2, 30, 70);
+    border: none;
+    padding: 14px 30px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    font-family: "Open Sans", sans-serif;
     cursor: pointer;
     margin: 20px;
 
@@ -360,30 +404,36 @@
 .sec4 h1 {
 
     color: white;
-    font-size: 40px;
+    font-size: 48px;
+    font-weight: 400;
+    font-family: Merriweather, serif;
     padding: 80px 10px;
 
 }
 
 .features {
     display: flex;
-    padding: 20px;
+    /* padding: 20px; */
+    padding-right: 200px;
+    padding-left: 200px;
     font-family: 'Open Sans', sans-serif;
 
 }
 
 .feature_1 {
 
-    width: 30%;
-    padding: 30px;
+    width: 20%;
+    padding: 50px;
+    /* padding-right: 80px;
+    padding-left: 80px; */
 }
 
 .feature_1 svg {
 
-    background-color: rgb(254, 159, 7);
+    background-color: rgb(255, 159, 7);
     fill: rgb(2, 30, 70);
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     padding: 15px;
     border-radius: 10px;
 
@@ -393,16 +443,23 @@
 
     font-size: 20px;
     padding-top: 20px;
-    color: rgb(254, 159, 7);
+    font-family: Montserrat, sans-serif;
+    color: rgb(255, 161, 0);
+    font-weight: 400;
+    letter-spacing: 1px;
 
 }
 
 .feature_1 p {
 
-    font-size: 15px;
+    font-size: 18px;
     padding-top: 30px;
     padding-bottom: 80px;
     color: white;
+    font-family: "Open Sans", sans-serif ;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 36px;
 
 }
 
@@ -410,17 +467,24 @@
 
     min-width: 100vw;
     min-height: 500px;
-    background-color: rgb(2, 30, 70);
-    padding-left: 100px;
+    background-color: rgb(255, 159, 8);
     display: flex;
     align-items: center;
 }
 
 .sec5_1 {
 
-    width: 50%;
+    width: 70%;
     font-family: 'Open Sans', sans-serif;
 
+}
+
+.blue-bg{
+    min-width: 95vw;
+    min-height: 500px;
+    background-color: rgb(2, 30, 70);
+    display: flex;
+    align-items: center;
 }
 
 .testimonial1 {
@@ -484,13 +548,6 @@
     color: white;
     font-size: 40px;
 
-}
-
-
-.bar2 {
-    width: 80px;
-    height: 600px;
-    background-color: rgb(255, 159, 8);
 }
 
 .sec6 {
