@@ -54,37 +54,39 @@
     flex-direction: column;
     justify-content: flex-end;
     color: white;
-    height: 1000px;
+    height: 100vh;
+    padding: 0 20rem;
 
 }
 
 .hero svg {
     max-width: 80px;
-    margin: 0px 0px 25px 55px;
+    margin-bottom: 25px;
     fill: white;
 }
 
 .hero p {
 
-    margin: 0px 1346px 25px 60px;
+    margin-bottom: 25px;; 
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
+    max-width: 500px;
 }
 
 .hero h3 {
 
-    margin: 0px 0px 150px 55px;
+
     font-size: 16px;
     font-weight: 700;
     font-family: 'Open Sans', sans-serif;
-
+    margin-bottom: 150px;
 }
 
 .sec1 {
 
     min-width: 80vw;
     background-color: rgb(2, 30, 70);
-    padding: 100px 50px;
+    padding: 5rem 20rem;
 }
 
 
@@ -92,16 +94,17 @@
 
     fill: rgb(255, 159, 8);
     width: 300px;
-    margin: 0px 0px 40px 40px;
+    margin-bottom: 25px;
 }
 
 .sec1 p {
 
     font-size: 48px;
-    margin: 0px 650px 40px 40px;
+    margin-bottom: 40px;
     font-family: 'Merriweather', serif;
     font-weight: 300;
     color: white;
+    max-width: 42rem;
 
 }
 
@@ -119,7 +122,6 @@
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 4px;
-    margin: 0px 0px 0px 40px;
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
 }
@@ -128,14 +130,14 @@
 
     min-width: 80vw;
     background-color: rgb(2, 30, 70);
-    padding: 100px 50px;
+    padding: 5rem 20rem;
 
 }
 
 .sec2 h1 {
 
     text-align: left;
-    margin: 0px 0px 40px 60px;
+    margin-bottom: 40px;
     color: white;
     font-family: Merriweather, serif;
     font-size: 48px;
@@ -148,17 +150,14 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     font-family: 'Open Sans', sans-serif;
-    margin: 0px 300px 0px 300px
 }
 
 .sec2-div2 {
 
     width: 25%;
     text-align: left;
-    padding: 40px;
 }
 
 .sec2-div2 h2 {
@@ -183,7 +182,6 @@
 .sec2-div3 {
 
     width: 25%;
-    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,7 +205,6 @@
 
 .sec2-div4 {
     width: 25%;
-    padding: 40px;
     text-align: left;
 }
 
@@ -241,19 +238,19 @@
     min-height: 500px;
     display: flex;
     background-color: rgb(255, 159, 8);
+    padding-right: 4vw; 
 
 }
 
 .team {
 
-    min-width: 96vw;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
     background-color: rgb(2, 30, 70);
     margin-right: 80px;
     align-content: center;
     justify-content: center;
+    padding: 5rem 20rem;
 }
 
 
@@ -269,8 +266,8 @@
 
     display: flex;
     align-items: center;
-    margin: 75px 30px;
-    padding: 30px;
+    margin-bottom: 5rem;
+    margin-right: 5rem;
 
 }
 
@@ -306,6 +303,7 @@
 
     margin: 10px 10px;
     font-size: 14px;
+    line-height: 24.2px;
     font-style: italic;
     font-family: 'Open Sans', sans-serif;
 
@@ -326,8 +324,8 @@
 }
 
 .dp {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
 }
 
@@ -348,8 +346,6 @@
 .ourteam {
 
     text-align: left;
-    margin-left: 100px;
-
 
 }
 
@@ -398,7 +394,7 @@
     min-width: 100vw;
     min-height: 500px;
     background-color: rgb(2, 30, 70);
-    padding-left: 100px;
+    padding: 5rem 20rem;
 }
 
 .sec4 h1 {
@@ -413,19 +409,15 @@
 
 .features {
     display: flex;
-    /* padding: 20px; */
-    padding-right: 200px;
-    padding-left: 200px;
     font-family: 'Open Sans', sans-serif;
 
 }
 
 .feature_1 {
 
-    width: 20%;
-    padding: 50px;
-    /* padding-right: 80px;
-    padding-left: 80px; */
+    width: 16%;
+    padding: 2rem;
+    padding-right: 4rem;
 }
 
 .feature_1 svg {
@@ -465,39 +457,38 @@
 
 .sec5 {
 
-    min-width: 100vw;
-    min-height: 500px;
     background-color: rgb(255, 159, 8);
     display: flex;
     align-items: center;
+    padding-right: 4vw;
 }
 
 .sec5_1 {
 
-    width: 70%;
+    width: 100%;
     font-family: 'Open Sans', sans-serif;
 
 }
 
 .blue-bg{
-    min-width: 95vw;
-    min-height: 500px;
+
     background-color: rgb(2, 30, 70);
     display: flex;
     align-items: center;
+    padding: 5rem 10rem;
 }
 
 .testimonial1 {
 
     display: flex;
     align-items: center;
-    padding: 40px;
+    margin-bottom: 10rem;
 
 }
 
-.testimonial1 div {
-    padding: 30px;
-}
+/* .testimonial1 div {
+
+} */
 
 .testimonial1 div h2 {
     color: white;
@@ -513,7 +504,6 @@
 
     display: flex;
     align-items: center;
-    padding: 40px;
 
 }
 
@@ -536,9 +526,10 @@
 .dp2 {
 
     width: 200px;
-    height: 200px;
-    border-radius: 50%;
-
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-right: 10rem;
 }
 
 .sec5_2 {
