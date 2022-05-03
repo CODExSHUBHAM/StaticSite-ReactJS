@@ -517,11 +517,6 @@
     padding: 10px;
 }
 
-.testimonial2 div {
-    padding: 30px;
-}
-
-
 
 .dp2 {
 
@@ -541,46 +536,55 @@
 
 }
 
+.sec5_2 h1{
+
+    font-family: Merriweather, serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 52.8px;
+
+}
+
 .sec6 {
-    min-width: 100vw;
-    min-height: 500px;
+
     background-color: rgb(2, 30, 70);
-    padding: 80px;
     color: white;
+    padding: 5rem 20rem;
 }
 
 .sec6 h1 {
-    font-size: 60px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 52.8px ;
     color: white;
     width: 50%;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
 
 .about {
 
-    width: 30%;
-    padding: 20px;
+    width: 44%;
+    margin-bottom: 60px;
     color: white;
+    font-family: "Opan Sans" , sans-serif;
+    font-size: 16px;
+    line-height: 25.6px;
 
 }
 
 .counting {
 
-    width: 100%;
-    height: 300px;
     display: flex;
     align-items: center;
-    padding: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
+    justify-content: space-between;
 }
+
+
 
 .count1 {
 
     width: 20%;
-    padding: 20px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 
@@ -588,21 +592,33 @@
 }
 
 .counter {
-    font-size: 100px;
-    padding: 20px;
-    font-family: 'Karla', sans-serif;
+    font-family: Montserrat, sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 86.4px;
+    margin-bottom: 20px;
+}
+
+.counter-p{
+
+    font-family: "Opan Sans" , sans-serif;
+    font-size: 16px;
+    line-height: 25.6px;
 
 }
 
 .count1 h2 {
-    font-size: 20px;
-    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: "Opan Sans" , sans-serif;
+    line-height: 25.6px;
+    margin-bottom: 20px;
 }
 
 .count2 {
 
     width: 20%;
-    padding: 20px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 
@@ -610,14 +626,18 @@
 }
 
 .count2 h2 {
-    font-size: 20px;
-    padding: 20px;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: "Opan Sans" , sans-serif;
+    line-height: 25.6px;
+    margin-bottom: 20px;
 }
 
 .count3 {
 
     width: 20%;
-    padding: 20px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 
@@ -625,14 +645,18 @@
 }
 
 .count3 h2 {
-    font-size: 20px;
-    padding: 20px;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: "Opan Sans" , sans-serif;
+    line-height: 25.6px;
+    margin-bottom: 20px;
 }
 
 .count4 {
 
     width: 20%;
-    padding: 20px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 
@@ -641,39 +665,48 @@
 
 .count4 h2 {
 
-    font-size: 20px;
-    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: "Opan Sans" , sans-serif;
+    line-height: 25.6px;
+    margin-bottom: 20px;
 }
 
 .smallbar {
 
     width: auto;
-    height: 20px;
+    height: 15px;
+    margin-bottom: 40px;
     background-color: rgb(255, 159, 8);
 
 }
 
 .sec7 {
 
-    min-width: 100vw;
-    min-height: 700px;
+    padding: 5rem 20rem;
     background-color: rgb(2, 30, 70);
-    padding: 60px;
     color: white;
+    min-height: 40rem;
 
 }
 
 .sec7 h1 {
 
-    font-size: 50px;
-    padding: 10px;
+    font-family: Merriweather, serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 52.8px;
+    margin-bottom: 20px;
 }
 
 .sec7 h3 {
 
-    font-size: 20px;
-    padding: 10px;
     margin-bottom: 50px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25.6px;
     font-family: 'Open Sans', sans-serif;
 
 }
@@ -686,8 +719,40 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px;
+    margin-bottom: 40px;
     font-family: 'Open Sans', sans-serif;
+}
+
+.input{
+    color: white;
+    border: none;
+    border-bottom: 4px solid rgb(255, 161, 0);
+    background-color: rgb(2, 30, 70);
+    margin-right: 20px;
+    height: 50px;
+    width: 240px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 25.6px;
+}
+
+.label{
+    font-family: "Opan Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+}
+
+.label a{
+    text-decoration: none;
+    font-family: "Opan Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+    color: rgb(170, 204, 247);
 }
 
 .input_1 {
@@ -697,45 +762,11 @@
     flex-direction: column;
 }
 
-.input_1 label {
-    font-size: 30px;
-    margin: 10px;
-
-}
-
-.input_1 input {
-
-    color: white;
-    border: none;
-    border-bottom: 2px solid rgb(254, 159, 7);
-    background-color: rgb(2, 30, 70);
-    font-size: 20px;
-    margin: 10px;
-    height: 40px;
-}
-
 .input_2 {
 
     width: 35%;
     display: flex;
     flex-direction: column;
-}
-
-.input_2 label {
-    font-size: 30px;
-    margin: 10px;
-
-}
-
-.input_2 input {
-
-    color: white;
-    border: none;
-    border-bottom: 2px solid rgb(254, 159, 7);
-    background-color: rgb(2, 30, 70);
-    font-size: 20px;
-    margin: 10px;
-    height: 40px;
 }
 
 .input_3 {
@@ -745,28 +776,11 @@
     flex-direction: column;
 }
 
-.input_3 label {
-    font-size: 30px;
-    margin: 10px;
-
-}
-
-.input_3 input {
-
-    color: white;
-    border: none;
-    border-bottom: 2px solid rgb(254, 159, 7);
-    background-color: rgb(2, 30, 70);
-    font-size: 20px;
-    margin: 10px;
-    height: 40px;
-}
-
 .form2 {
 
     width: 60%;
     height: 200px;
-    padding: 20px;
+    margin-bottom: 40px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -775,47 +789,47 @@
     width: 35%;
     display: flex;
     flex-direction: column;
-}
-
-.input_4 label {
-    font-size: 30px;
-    margin: 10px;
-
+    margin-bottom: 20px;
 }
 
 .input_4 textarea {
 
     color: white;
     border: none;
-    border-bottom: 2px solid rgb(254, 159, 7);
+    border-bottom: 4px solid rgb(255, 161, 0);
     background-color: rgb(2, 30, 70);
-    font-size: 20px;
-    margin: 10px;
-    height: 130px;
-    width: 60vw;
+    margin-right: 20px;
+    min-height: 10rem;
+    min-width: 48rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 25.6px;
 }
 
 .input_5 {
-    padding: 10px;
+    margin-bottom: 40px;
 }
-
-.btn-margin {
-    margin: 10px;
-}
-
-
-
-
-
-
-
-
-
 
 .footer {
-    width: 100vw;
-    padding: 50px;
+
+    padding: 5rem 5rem;
     text-align: center;
-    background-color: rgb(50, 48, 51);
-    color: white;
+    background-color: rgb(51, 51, 51);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer p{
+
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    width: 430px;
+    line-height: 22.4px;
+    color: rgb(255,255,255);
+    padding: 1.5rem ;
+    
 }
