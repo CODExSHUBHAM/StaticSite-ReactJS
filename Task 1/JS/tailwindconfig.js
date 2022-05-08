@@ -1,5 +1,10 @@
 tailwind.config = {
     theme: {
+
+        theme:{
+            '3xl' : '1900px'
+        },
+
         extend: {
             colors: {
                 primary: '#001f46',
@@ -11,11 +16,9 @@ tailwind.config = {
                 'hero': "url('../Assets/bg.jpeg')"
             },
             fontFamily: {
-
                 'sans': ['Open Sans', 'sans-serif'],
                 'sans-m':['Montserrat, sans-serif'],
                 'serif': ['Merriweather', 'serif']
-
             },
             letterSpacing: {
                 button: '4px'
@@ -24,5 +27,6 @@ tailwind.config = {
                 btn : '22.4px' 
             }
         }
+
     }
 }
