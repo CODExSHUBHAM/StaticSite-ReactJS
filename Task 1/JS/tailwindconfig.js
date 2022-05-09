@@ -1,10 +1,10 @@
 tailwind.config = {
     theme: {
-
-        theme:{
-            '3xl' : '1900px'
+        screens:{
+            'tab':'768px',
+            'lap':'1024px',
+            'desk':'1900px'
         },
-
         extend: {
             colors: {
                 primary: '#001f46',
@@ -27,6 +27,5 @@ tailwind.config = {
                 btn : '22.4px' 
             }
         }
-
     }
 }
