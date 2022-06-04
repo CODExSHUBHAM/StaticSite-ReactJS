@@ -23,7 +23,6 @@ function App() {
   const counters = document.querySelectorAll('.counter');
   const speed = 500;
 
-
   counters.forEach(counter => {
       const updatecount = () => {
           const target = +counter.getAttribute('data-target');
@@ -509,7 +508,7 @@ function App() {
 
           {/* <!-- Section 7 (FORM) --> */}
 
-          {/* <div className="py-20 px-5 tab:px-16 lap:px-20 desk:px-96 text-white">
+          <div className="py-20 px-5 tab:px-16 lap:px-20 desk:px-96 text-white">
 
             <h1 className="font-serif mb-5 tab:leading-[52.8px] font-bold text-3xl tab:text-5xl">
               Doing The Right Thing, At The Right Time
@@ -526,21 +525,21 @@ function App() {
                 <div className="tab:w-2/3 flex flex-col tab:flex-row items-center mb-10">
 
                   <div className="flex flex-col">
-                    <label className="font-normal text-base leading-[25.6px]" for="">Name</label>
+                    <label className="font-normal text-base leading-[25.6px]" htmlFor="">Name</label>
                     <input
                       className="mb-5 tab:mb-0 border-b-4 border-secondary bg-primary tab:mr-5 h-14 w-80 tab:w-56 text-base font-normal leading-[25.6px]"
                       placeholder="Enter Your Name" type="text"></input>
                   </div>
 
                   <div className="flex flex-col">
-                    <label className="font-normal text-base leading-[25.6px]" for="">Adress</label>
+                    <label className="font-normal text-base leading-[25.6px]" htmlFor="">Adress</label>
                     <input
                       className="mb-5 tab:mb-0 border-b-4 border-secondary bg-primary tab:mr-5 h-14 w-80 tab:w-56 text-base font-normal leading-[25.6px]"
                       placeholder="Enter Your Adress" type="text"></input>
                   </div>
 
                   <div className="flex flex-col">
-                    <label className="font-normal text-base leading-[25.6px]" for="">Email</label>
+                    <label className="font-normal text-base leading-[25.6px]" htmlFor="">Email</label>
                     <input
                       className="mb-5 tab:mb-0 border-b-4 border-secondary bg-primary tab:mr-5 h-14 w-80 tab:w-56 text-base font-normal leading-[25.6px]"
                       placeholder="Enter Your Email" type="text"></input>
@@ -550,16 +549,16 @@ function App() {
 
                 <div className="lap:w-2/3 mb-10">
                   <div className="flex flex-col mb-5">
-                    <label className="font-normal text-base leading-[25.6px]" for="">Message</label>
+                    <label className="font-normal text-base leading-[25.6px]" htmlFor="">Message</label>
                     <textarea
                       className=" h-40 p-5 border-b-4 border-secondary bg-primary tab:mr-5 text-base font-normal leading-[25.6px]"
                       name="comment" form="usrform" placeholder="Enter Your Message"></textarea>
                   </div>
 
                   <div className="mb-10">
-                    <input type="radio">
-                      <label className="font-normal text-base leading-[25.6px]" for="">I accept the <a
-                        className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label></input>
+                    <input type="radio"/>
+                    <label className="font-normal text-base leading-[25.6px]" htmlFor="">I accept the <a
+                        className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label>
                   </div>
 
                   <button
@@ -573,7 +572,7 @@ function App() {
             </div>
 
 
-          </div> */}
+          </div>
 
         </main>
 
