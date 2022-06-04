@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
       screens:{
@@ -16,7 +16,7 @@ module.exports = {
         footer: 'rgb(51, 51, 51)'
       },
       backgroundImage: {
-        'hero': "url('../Assets/bg.jpeg')"
+        'hero': "url('/src/bg.jpeg')"
       },
       fontFamily: {
         'sans': ['Open Sans', 'sans-serif'],
