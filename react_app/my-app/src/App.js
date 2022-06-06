@@ -17,7 +17,7 @@ import globe from '../src/Images/globe.svg';
 import data from '../src/Images/data.svg';
 import infinity from '../src/Images/infinity.svg';
 import server from '../src/Images/server.svg';
-import React from 'react'
+import React from 'react';
 
 function App() {
 
