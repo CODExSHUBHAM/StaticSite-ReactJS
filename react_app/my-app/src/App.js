@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css';
 import quote from '../src/Images/quote.svg';
 import waves from '../src/Images/waves.svg';
@@ -17,7 +18,8 @@ import globe from '../src/Images/globe.svg';
 import data from '../src/Images/data.svg';
 import infinity from '../src/Images/infinity.svg';
 import server from '../src/Images/server.svg';
-import React from 'react';
+import { supabase } from './supabaseClient';
+
 
 function App() {
 
@@ -42,6 +44,16 @@ function App() {
       updatecount();
   });
 
+  async function getData(){
+    const { data, error } = await supabase
+    .from('Features')
+    .select()
+    console.log(data , error)
+  }
+
+  getData()
+  
+
   return (
     <div className="App">
 
@@ -56,7 +68,7 @@ function App() {
           <div
             className="bg-hero bg-cover bg-center flex flex-col justify-end min-h-screen tab:min-h-[65vh] lap:h-[900px] text-white py-0 px-5 tab:px-16 lap:px-20 desk:px-96">
 
-            <img className="w-20 mb-6 fill-current text-white" src={quote} alt=""></img>
+            <img className="w-20 mb-6 fill-white text-white" src={quote} alt=""></img>
 
             <p className="mb-6 text-base max-w-lg">
               Lectus quam id leo in. Proin fermentum leo vel orci porta non pulvinar. Eget sit amet tellus cras
@@ -558,7 +570,7 @@ function App() {
 
                   <div className="mb-10">
                     <input type="radio"/>
-                    <label className="font-normal text-base leading-[25.6px]" htmlFor="">I accept the <a
+                    <label className="font-normal text-base leading-[25.6px]" htmlFor=""> I accept the <a
                         className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label>
                   </div>
 

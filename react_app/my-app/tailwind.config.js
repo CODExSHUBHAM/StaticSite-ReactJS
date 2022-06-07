@@ -16,7 +16,7 @@ module.exports = {
         footer: 'rgb(51, 51, 51)'
       },
       backgroundImage: {
-        'hero': "url('/src/bg.jpeg')"
+        'hero': "url('/src/Images/bg.jpeg')"
       },
       fontFamily: {
         'sans': ['Open Sans', 'sans-serif'],
