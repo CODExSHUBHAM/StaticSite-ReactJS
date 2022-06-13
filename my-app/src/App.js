@@ -1,58 +1,95 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import quote from '../src/Images/quote.svg';
 import waves from '../src/Images/waves.svg';
 import elegance from '../src/Images/pexels-photo-6730458.jpeg';
-import jeffery from '../src/Images/1.jpeg';
-import ann from '../src/Images/3.jpeg';
-import alex from '../src/Images/2.jpeg';
-import roxie from '../src/Images/4.jpeg';
-import testimonial1 from '../src/Images/pexels-photo-6139560.jpeg';
-import testimonial2 from '../src/Images/pexels-photo-5944321.jpeg';
 import facebook from '../src/Images/facebook.svg';
 import instgram from '../src/Images/instagram.svg';
 import twitter from '../src/Images/twitter.svg';
-import app from '../src/Images/app.svg';
-import cloud from '../src/Images/cloud.svg';
-import globe from '../src/Images/globe.svg';
-import data from '../src/Images/data.svg';
-import infinity from '../src/Images/infinity.svg';
-import server from '../src/Images/server.svg';
 import { supabase } from './supabaseClient';
 
 
 function App() {
 
-  const counters = document.querySelectorAll('.counter');
-  const speed = 500;
+  // const counters = document.querySelectorAll('.counter');
+  // const speed = 500;
 
-  counters.forEach(counter => {
-      const updatecount = () => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText;
+  // counters.forEach(counter => {
+  //     const updatecount = () => {
+  //         const target = +counter.getAttribute('data-target');
+  //         const count = +counter.innerText;
 
-          const inc = target / speed;
+  //         const inc = target / speed;
 
-          if(count < target){
-              counter.innerText = Math.ceil(count + inc);
-              setTimeout(updatecount,1);
-          } else{
-              count.innerText = target;
-          }
-      }
-       
-      updatecount();
-  });
+  //         if(count < target){
+  //             counter.innerText = Math.ceil(count + inc);
+  //             setTimeout(updatecount,1);
+  //         } else{
+  //             count.innerText = target;
+  //         }
+  //     }
 
-  async function getData(){
-    const { data, error } = await supabase
-    .from('Features')
-    .select()
-    console.log(data , error)
-  }
+  //     updatecount();
+  // });
 
-  getData()
-  
+  const [team, setTeam] = useState([])
+  const [features, setFeatures] = useState([])
+  const [testimonials, setTestimonials] = useState([])
+  const [counter, setCounter] = useState([])
+
+
+  useEffect(() => {
+    async function getData() {
+      const { data, error } = await supabase
+        .from('team')
+        .select()
+        .order('order', { ascending: true })
+      console.log(data, error)
+      setTeam(data)
+    }
+
+    getData()
+  }, [setTeam]);
+
+  useEffect(() => {
+    async function getData() {
+      const { data, error } = await supabase
+        .from('features')
+        .select()
+        .order('order', { ascending: true })
+      console.log(data, error)
+      setFeatures(data)
+    }
+
+    getData()
+  }, [setFeatures]);
+
+  useEffect(() => {
+    async function getData() {
+      const { data, error } = await supabase
+        .from('testimonials')
+        .select()
+        .order('order', { ascending: true })
+      console.log(data, error)
+      setTestimonials(data)
+    }
+
+    getData()
+  }, [setTestimonials]);
+
+  useEffect(() => {
+    async function getData() {
+      const { data, error } = await supabase
+        .from('counter')
+        .select()
+        .order('order', { ascending: true })
+      console.log(data, error)
+      setCounter(data)
+    }
+
+    getData()
+  }, [setCounter]);
+
 
   return (
     <div className="App">
@@ -161,118 +198,33 @@ function App() {
 
               <div className="grid grid-col-1 lap:grid-cols-2 lap:grid-rows-2 items-center justify-center">
 
-                <div className="flex flex-col tab:flex-row items-center justify-center p-8">
+                {team.map((value, index) => {
+                  return (<div key={index} className="flex flex-col tab:flex-row items-center justify-center p-8">
 
-                  <img className="w-64 h-64 rounded-full mb-10 tab:mb-0" src={jeffery} alt=""></img>
+                    <img className="w-64 h-64 rounded-full mb-10 tab:mb-0" src={value.image} alt=""></img>
 
-                  <div className="text-center text-white tab:pl-6">
+                    <div className="text-center text-white tab:pl-6">
 
-                    <h2 className="font-serif text-xl font-normal mb-2">Jeffery Brown</h2>
-                    <h3 className="mb-4 text-base font-bold text-secondary">CREATIVE LEADER</h3>
-                    <p className="mb-4 text-sm leading-btn italic">
-                      Sample text. Click to select the text box. Click again or double click to start
-                      editing the text.
-                    </p>
+                      <h2 className="font-serif text-xl font-normal mb-2">{value.name}</h2>
+                      <h3 className="mb-4 text-base font-bold text-secondary uppercase">{value.designation}</h3>
+                      <p className="mb-4 text-sm leading-btn italic">
+                        {value.description}
+                      </p>
 
-                    <div className="flex fill-current justify-evenly">
+                      <div className="flex fill-current justify-evenly">
 
-                      <img className="w-8 h-8" src={facebook} alt=""></img>
+                        <img className="w-8 h-8" src={facebook} alt=""></img>
 
-                      <img className="w-8 h-8" src={instgram} alt=""></img>
+                        <img className="w-8 h-8" src={instgram} alt=""></img>
 
-                      <img className="w-8 h-8" src={twitter} alt=""></img>
+                        <img className="w-8 h-8" src={twitter} alt=""></img>
 
-                    </div>
-
-
-                  </div>
-
-                </div>
-
-                <div className="flex flex-col tab:flex-row items-center justify-center p-8">
-
-                  <img className="w-64 h-64 rounded-full mb-10 tab:mb-0" src={ann} alt=""></img>
-
-                  <div className="text-center text-white tab:pl-6">
-
-                    <h2 className="font-serif text-xl font-normal mb-2">Ann Richmond</h2>
-                    <h3 className="mb-4 text-base font-bold text-secondary">MANAGER</h3>
-                    <p className="mb-4 text-sm leading-btn italic">
-                      Sample text. Click to select the text box. Click again or double click to start
-                      editing the text.
-                    </p>
-
-                    <div className="flex fill-current justify-evenly">
-
-                      <img className="w-8 h-8" src={facebook} alt=""></img>
-
-                      <img className="w-8 h-8" src={instgram} alt=""></img>
-
-                      <img className="w-8 h-8" src={twitter} alt=""></img>
+                      </div>
 
                     </div>
 
-
-                  </div>
-
-                </div>
-
-                <div className="flex flex-col tab:flex-row items-center justify-center p-8">
-
-                  <img className="w-64 h-64 rounded-full mb-10 tab:mb-0" src={alex} alt=""></img>
-
-                  <div className="text-center text-white tab:pl-6">
-
-                    <h2 className="font-serif text-xl font-normal mb-2">Alex Grinfield</h2>
-                    <h3 className="mb-4 text-base font-bold text-secondary">PROGRAMMING GURU</h3>
-                    <p className="mb-4 text-sm leading-btn italic">
-                      Sample text. Click to select the text box. Click again or double click to start
-                      editing the text.
-                    </p>
-
-                    <div className="flex fill-current justify-evenly">
-
-                    <img className="w-8 h-8" src={facebook} alt=""></img>
-
-                    <img className="w-8 h-8" src={instgram} alt=""></img>
-
-                    <img className="w-8 h-8" src={twitter} alt=""></img>
-
-                    </div>
-
-
-                  </div>
-
-
-                </div>
-
-                <div className="flex flex-col tab:flex-row items-center justify-center p-8">
-
-                  <img className="w-64 h-64 rounded-full mb-10 tab:mb-0" src={roxie} alt=""></img>
-
-                  <div className="text-center text-white tab:pl-6">
-
-                    <h2 className="font-serif text-xl font-normal mb-2">Roxie Swanson</h2>
-                    <h3 className="mb-4 text-base font-bold text-secondary">SALES MANAGER</h3>
-                    <p className="mb-4 text-sm leading-btn italic">
-                      Sample text. Click to select the text box. Click again or double click to start
-                      editing the text.
-                    </p>
-
-                    <div className="flex fill-current justify-evenly">
-
-                    <img className="w-8 h-8" src={facebook} alt=""></img>
-
-                    <img className="w-8 h-8" src={instgram} alt=""></img>
-
-                    <img className="w-8 h-8" src={twitter} alt=""></img>
-
-                    </div>
-
-
-                  </div>
-
-                </div>
+                  </div>)
+                })}
 
               </div>
 
@@ -305,93 +257,21 @@ function App() {
 
             <div className="grid grid-col-1 tab:grid-cols-2 lap:grid-cols-3 tab:grid-rows-3 lap:grid-rows-2">
 
-              <div className="p-7">
+              {features.map((value, index) => {
+                return (<div key={index} className="p-7">
 
-                <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={data} alt=""></img>
+                  <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={value.icon} alt=""></img>
 
-                <h2 className="text-xl text-secondary font-normal tracking-wider mb-6 font-sans-m">UNLIMITED STORAGE</h2>
+                  <h2 className="font-sans-m text-xl text-secondary font-normal tracking-wider mb-6 uppercase">
+                    {value.title}
+                  </h2>
 
-                <p className="text-lg font-light leading-9 w-11/12">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                  ultrices.
-                </p>
+                  <p className="text-lg font-light leading-9 w-11/12">
+                    {value.description}
+                  </p>
 
-              </div>
-
-              <div className="p-7">
-
-                <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={infinity} alt=""></img>
-
-
-                <h2 className="font-sans-m text-xl text-secondary font-normal tracking-wider mb-6">UNLIMITED
-                  BANDWIDTH
-                </h2>
-
-                <p className="text-lg font-light leading-9 w-11/12">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                  ultrices.
-                </p>
-
-              </div>
-
-              <div className="p-7">
-
-                <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={globe} alt=""></img>
-
-
-                <h2 className="font-sans-m text-xl text-secondary font-normal tracking-wider mb-6">DOMAIN
-                  REGISTRATIONS
-                </h2>
-
-                <p className="text-lg font-light leading-9 w-11/12">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                  ultrices.
-                </p>
-
-              </div>
-
-              <div className="p-7">
-
-                <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={cloud} alt=""></img>
-
-                <h2 className="font-sans-m text-xl text-secondary font-normal tracking-wider mb-6">SSL CERTIFICATE
-                </h2>
-
-                <p className="text-lg font-light leading-9 w-11/12">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                  ultrices.
-                </p>
-
-              </div>
-
-              <div className="p-7">
-
-                <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={server} alt=""></img>
-
-                <h2 className="font-sans-m text-xl text-secondary font-normal tracking-wider mb-6">ONE-CLICK
-                  INSTALLS
-                </h2>
-
-                <p className="text-lg font-light leading-9 w-11/12">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                  ultrices.
-                </p>
-              </div>
-
-              <div className="p-7">
-
-                <img className="mb-8 w-20 h-20 bg-secondary fill-primary p-3 rounded-xl" src={app} alt=""></img>
-
-                <h2 className="font-sans-m text-xl text-secondary font-normal tracking-wider mb-6">APPLICATION
-                  INSTALLS
-                </h2>
-
-                <p className="text-lg font-light leading-9 w-11/12">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit
-                  ultrices.
-                </p>
-
-              </div>
+                </div>)
+              })}
 
             </div>
 
@@ -405,44 +285,24 @@ function App() {
 
               <div>
 
-                <div className="flex flex-col tab:flex-row lap:items-center justify-center">
+                {testimonials.map((value, index) => {
+                  return (<div className="flex flex-col tab:flex-row lap:items-center justify-center">
 
-                  <div className="p-7">
-                    <img className="w-36 h-36 object-cover rounded-full" src={testimonial1}
-                      alt=""></img>
-                  </div>
+                    <div className="p-7">
+                      <img className="w-36 h-36 object-cover rounded-full" src={value.image}
+                        alt=""></img>
+                    </div>
 
-                  <div className="p-7 tab:w-3/5">
+                    <div className="p-7 tab:w-3/5">
 
-                    <h2 className="font-sans-m text-lg font-bold leading-[21.6px] mb-5">LINDA HUDSON</h2>
+                      <h2 className="font-sans-m text-lg font-bold leading-[21.6px] mb-5 uppercase">{value.name}</h2>
 
-                    <p className="leading-[25.6px]">
-                      "Aenean pulvinar dui ornare, feugiat lorem non, ultrices justo. Mauris efficitur,
-                      mauris
-                      in auctor euismod, quam elit ultrices urna"
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col tab:flex-row lap:items-center justify-center">
-
-                  <div className="p-7">
-                    <img className="w-36 h-36 object-cover rounded-full" src={testimonial2}
-                      alt=""></img>
-                  </div>
-
-                  <div className="p-7 tab:w-3/5">
-
-                    <h2 className="font-sans-m text-lg font-bold leading-[21.6px] mb-5">PAUL LARSON</h2>
-
-                    <p className="leading-[25.6px">"Aenean pulvinar dui ornare, feugiat lorem non, ultrices
-                      justo. Mauris efficitur,
-                      mauris
-                      in auctor euismod, quam elit ultrices urna"
-                    </p>
-
-                  </div>
-                </div>
+                      <p className="leading-[25.6px]">
+                        {value.description}
+                      </p>
+                    </div>
+                  </div>)
+                })}
 
               </div>
 
@@ -471,49 +331,16 @@ function App() {
             <div
               className="grid grid-col-1 tab:grid-cols-2 lap:grid-cols-4 items-center justify-center justify-items-center gap-8">
 
-              <div className="text-center">
-                <div className="bg-secondary h-4 mb-10 "></div>
-                <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5" data-target="236">0
-                </div>
-                <h2 className="text-base font-semibold tracking-wider leading-[25.6px] mb-5">CUPS OF COFFE</h2>
-                <p className="text-base leading-[25.6px]">
-                  Sample text. Click to select the text box. Click again or double click to start editing the
-                  text.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-secondary h-4 mb-10"></div>
-                <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5" data-target="17">0
-                </div>
-                <h2 className="text-base font-semibold tracking-wider leading-[25.6px] mb-5">AWARDS WON</h2>
-                <p className="text-base leading-[25.6px]">
-                  Sample text. Click to select the text box. Click again or double click to start editing the
-                  text.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-secondary h-4 mb-10"></div>
-                <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5" data-target="108">0
-                </div>
-                <h2 className="text-base font-semibold tracking-wider leading-[25.6px] mb-5">HAPPY CLIENTS</h2>
-                <p className="text-base leading-[25.6px]">
-                  Sample text. Click to select the text box. Click again or double click to start editing the
-                  text.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-secondary h-4 mb-10"></div>
-                <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5" data-target="150">0
-                </div>
-                <h2 className="text-base font-semibold tracking-wider leading-[25.6px] mb-5">PROJECTS FINISHED</h2>
-                <p className="text-base leading-[25.6px]">
-                  Sample text. Click to select the text box. Click again or double click to start editing the
-                  text.
-                </p>
-              </div>
+              {counter.map((value, index) => {
+                return (
+                  <div className="text-center">
+                    <div className="bg-secondary h-4 mb-10 "></div>
+                    <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5" data-target={value.target}>0</div>
+                    <h2 className="text-base font-semibold tracking-wider leading-[25.6px] mb-5 uppercase">{value.title}</h2>
+                    <p className="text-base leading-[25.6px]">{value.description}</p>
+                  </div>
+                )
+              })}
 
             </div>
 
@@ -569,9 +396,9 @@ function App() {
                   </div>
 
                   <div className="mb-10">
-                    <input type="radio"/>
+                    <input type="radio" />
                     <label className="font-normal text-base leading-[25.6px]" htmlFor=""> I accept the <a
-                        className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label>
+                      className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label>
                   </div>
 
                   <button
@@ -604,6 +431,7 @@ function App() {
           Website Templates created with Website Builder Software.
         </p>
       </footer>
+
     </div>
   );
 }
