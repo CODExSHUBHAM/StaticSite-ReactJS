@@ -16,6 +16,11 @@ function App() {
   const [testimonials, setTestimonials] = useState([])
   const [counter, setCounter] = useState([])
   const [finalCounter, setFinalCounter] = useState([])
+  const initialValues = { name: "", adress: "", email: "", message: "" }
+  const [formValues, setFormValues] = useState(initialValues)
+  const [formErrors, setFormErrors] = useState({})
+  const [checked, setChecked] = useState(false);
+  const [submited, setSubmited] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -23,7 +28,7 @@ function App() {
         .from('team')
         .select()
         .order('order', { ascending: true })
-        console.log(error)
+      console.log(error)
       setTeam(data)
     }
 
@@ -36,7 +41,7 @@ function App() {
         .from('features')
         .select()
         .order('order', { ascending: true })
-        console.log(error)
+      console.log(error)
       setFeatures(data)
     }
 
@@ -49,7 +54,7 @@ function App() {
         .from('testimonials')
         .select()
         .order('order', { ascending: true })
-        console.log(error)
+      console.log(error)
       setTestimonials(data)
     }
 
@@ -62,36 +67,36 @@ function App() {
         .from('counter')
         .select()
         .order('order', { ascending: true })
-        console.log(error)
-        setCounter(data)
-        const tempCounter = data.map(item =>{
-        return {...item,value : 0}
+      console.log(error)
+      setCounter(data)
+      const tempCounter = data.map(item => {
+        return { ...item, value: 0 }
       })
-      setFinalCounter(tempCounter)  
+      setFinalCounter(tempCounter)
     }
 
     getData()
-  }, [setCounter , setFinalCounter]);
+  }, [setCounter, setFinalCounter]);
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    const speed = 60; // The lower the slower
+    const speed = 600;
 
-    if(finalCounter[0] && (finalCounter[0].value!==finalCounter[0].target || finalCounter[1].value!==finalCounter[1].target || finalCounter[2].value!==finalCounter[2].target || finalCounter[3].value!==finalCounter[3].target )){
+    if (finalCounter[0] && (finalCounter[0].value !== finalCounter[0].target || finalCounter[1].value !== finalCounter[1].target || finalCounter[2].value !== finalCounter[2].target || finalCounter[3].value !== finalCounter[3].target)) {
 
-      const tempCounter = finalCounter.map(item=>{
+      const tempCounter = finalCounter.map(item => {
 
         const target = item.target;
         const count = item.value;
-  
-        const inc = Math.ceil(target/speed)
-  
-        if(count<target){
-          item.value=count+inc;
-  
+
+        const inc = Math.ceil(target / speed)
+
+        if (count < target) {
+          item.value = count + inc;
+
         }
-        else{
-          item.value=item.target
+        else {
+          item.value = item.target
         }
 
         return item
@@ -99,11 +104,61 @@ function App() {
       })
 
       setFinalCounter(tempCounter)
-    }    
-  },[finalCounter , setFinalCounter])
+    }
+  }, [finalCounter, setFinalCounter]);
+
+  const valueChange = (e) => {
+
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  }
+
+  const checkBox = (e) => {
+
+    if (checked === false) {
+      setChecked(true)
+    }
+    else (
+      setChecked(false)
+    )
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    setFormErrors(validation(formValues, checked));
+    setSubmited(true);
+  }
+
+  const validation = (values, checked) => {
+    const errors = {}
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    if (!values.name) {
+      errors.name = " Name is required! "
+    }
+    if (!values.adress) {
+      errors.adress = " Adress is required! "
+    }
+    if (!values.email) {
+      errors.email = " Email is required! "
+    }
+    else if (!regex.test(values.email)) {
+      errors.email = "Please enter a valid email adress"
+    }
+    if (!values.message) {
+      errors.message = " Message is required! "
+    }
+    if (checked === false) {
+      errors.checked = " Please accept the terms! "
+    }
+
+    return errors
+  }
 
   return (
     <div className="App">
+
+      {/* MAIN SITE CODE */}
 
       <div className="min-h-screen overflow-hidden font-sans">
 
@@ -343,7 +398,6 @@ function App() {
               className="grid grid-col-1 tab:grid-cols-2 lap:grid-cols-4 items-center justify-center justify-items-center gap-8">
 
               {finalCounter.map((value, index) => {
-                console.log(value)
                 return (
                   <div key={index} className="text-center">
                     <div className="bg-secondary h-4 mb-10 "></div>
@@ -372,7 +426,7 @@ function App() {
 
             <div className="formparent">
 
-              <form action="">
+              <form onSubmit={submitForm}>
 
                 <div className="tab:w-2/3 flex flex-col tab:flex-row items-center mb-10">
 
@@ -380,21 +434,24 @@ function App() {
                     <label className="font-normal text-base leading-[25.6px]" htmlFor="">Name</label>
                     <input
                       className="mb-5 tab:mb-0 border-b-4 border-secondary bg-primary tab:mr-5 h-14 w-80 tab:w-56 text-base font-normal leading-[25.6px]"
-                      placeholder="Enter Your Name" type="text"></input>
+                      placeholder="Enter Your Name" name="name" type="text" value={formValues.name} onChange={valueChange} />
+                    <p className="text-red-600 font-thin">{formErrors.name}</p>
                   </div>
 
                   <div className="flex flex-col">
                     <label className="font-normal text-base leading-[25.6px]" htmlFor="">Adress</label>
                     <input
                       className="mb-5 tab:mb-0 border-b-4 border-secondary bg-primary tab:mr-5 h-14 w-80 tab:w-56 text-base font-normal leading-[25.6px]"
-                      placeholder="Enter Your Adress" type="text"></input>
+                      placeholder="Enter Your Adress" name="adress" type="text" value={formValues.adress} onChange={valueChange} />
+                    <p className="text-red-600 font-thin">{formErrors.adress}</p>
                   </div>
 
                   <div className="flex flex-col">
                     <label className="font-normal text-base leading-[25.6px]" htmlFor="">Email</label>
                     <input
                       className="mb-5 tab:mb-0 border-b-4 border-secondary bg-primary tab:mr-5 h-14 w-80 tab:w-56 text-base font-normal leading-[25.6px]"
-                      placeholder="Enter Your Email" type="text"></input>
+                      placeholder="Enter Your Email" name="email" type="text" value={formValues.email} onChange={valueChange} />
+                    <p className="text-red-600 font-thin">{formErrors.email}</p>
                   </div>
 
                 </div>
@@ -404,19 +461,25 @@ function App() {
                     <label className="font-normal text-base leading-[25.6px]" htmlFor="">Message</label>
                     <textarea
                       className=" h-40 p-5 border-b-4 border-secondary bg-primary tab:mr-5 text-base font-normal leading-[25.6px]"
-                      name="comment" form="usrform" placeholder="Enter Your Message"></textarea>
+                      name="message" form="usrform" placeholder="Enter Your Message" value={formValues.message} onChange={valueChange} />
+                    <p className="text-red-600 font-thin">{formErrors.message}</p>
                   </div>
 
                   <div className="mb-10">
-                    <input type="radio" />
+                    <input name="terms" type="checkbox" checked={checked} onChange={checkBox} />
                     <label className="font-normal text-base leading-[25.6px]" htmlFor=""> I accept the <a
                       className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label>
+                    <p className="text-red-600 font-thin">{formErrors.checked}</p>
                   </div>
 
-                  <button
-                    className="bg-secondary text-white font-bold border-none py-3.5 px-8 cursor-pointer text-sm tracking-button leading-btn">
-                    SUBMIT
-                  </button>
+                  <div className="flex items-center">
+                    <button
+                      className="bg-secondary text-white font-bold border-none py-3.5 px-8 cursor-pointer text-sm tracking-button leading-btn">
+                      SUBMIT
+                    </button>
+                    {Object.keys(formErrors).length === 0 && submited ? (<p className="mx-5 text-base text-green-500">We got your response, we'll get back to you shortly !!</p>) : (<p></p>)}
+                  </div>
+
 
                 </div>
 
