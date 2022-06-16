@@ -67,7 +67,6 @@ function App() {
         const tempCounter = data.map(item =>{
         return {...item,value : 0}
       })
-
       setFinalCounter(tempCounter)  
     }
 
@@ -367,7 +366,7 @@ function App() {
               Doing The Right Thing, At The Right Time
             </h1>
 
-            <h3 className="text-base font-normal leading-[25.6px] font-medium mb-12">
+            <h3 className="text-base leading-[25.6px] font-medium mb-12">
               Sample text. Click to select the text box. Click again or double click to start editing the text.
             </h3>
 
