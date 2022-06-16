@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, } from 'react'
 import './App.css';
 import quote from '../src/Images/quote.svg';
 import waves from '../src/Images/waves.svg';
@@ -11,32 +11,11 @@ import { supabase } from './supabaseClient';
 
 function App() {
 
-  // const counters = document.querySelectorAll('.counter');
-  // const speed = 500;
-
-  // counters.forEach(counter => {
-  //     const updatecount = () => {
-  //         const target = +counter.getAttribute('data-target');
-  //         const count = +counter.innerText;
-
-  //         const inc = target / speed;
-
-  //         if(count < target){
-  //             counter.innerText = Math.ceil(count + inc);
-  //             setTimeout(updatecount,1);
-  //         } else{
-  //             count.innerText = target;
-  //         }
-  //     }
-
-  //     updatecount();
-  // });
-
   const [team, setTeam] = useState([])
   const [features, setFeatures] = useState([])
   const [testimonials, setTestimonials] = useState([])
   const [counter, setCounter] = useState([])
-
+  const [finalCounter, setFinalCounter] = useState([])
 
   useEffect(() => {
     async function getData() {
@@ -44,7 +23,7 @@ function App() {
         .from('team')
         .select()
         .order('order', { ascending: true })
-      console.log(data, error)
+        console.log(error)
       setTeam(data)
     }
 
@@ -57,7 +36,7 @@ function App() {
         .from('features')
         .select()
         .order('order', { ascending: true })
-      console.log(data, error)
+        console.log(error)
       setFeatures(data)
     }
 
@@ -70,7 +49,7 @@ function App() {
         .from('testimonials')
         .select()
         .order('order', { ascending: true })
-      console.log(data, error)
+        console.log(error)
       setTestimonials(data)
     }
 
@@ -83,13 +62,46 @@ function App() {
         .from('counter')
         .select()
         .order('order', { ascending: true })
-      console.log(data, error)
-      setCounter(data)
+        console.log(error)
+        setCounter(data)
+        const tempCounter = data.map(item =>{
+        return {...item,value : 0}
+      })
+
+      setFinalCounter(tempCounter)  
     }
 
     getData()
-  }, [setCounter]);
+  }, [setCounter , setFinalCounter]);
 
+  useEffect(()=>{
+
+    const speed = 60; // The lower the slower
+
+    if(finalCounter[0] && (finalCounter[0].value!==finalCounter[0].target || finalCounter[1].value!==finalCounter[1].target || finalCounter[2].value!==finalCounter[2].target || finalCounter[3].value!==finalCounter[3].target )){
+
+      const tempCounter = finalCounter.map(item=>{
+
+        const target = item.target;
+        const count = item.value;
+  
+        const inc = Math.ceil(target/speed)
+  
+        if(count<target){
+          item.value=count+inc;
+  
+        }
+        else{
+          item.value=item.target
+        }
+
+        return item
+
+      })
+
+      setFinalCounter(tempCounter)
+    }    
+  },[finalCounter , setFinalCounter])
 
   return (
     <div className="App">
@@ -286,7 +298,7 @@ function App() {
               <div>
 
                 {testimonials.map((value, index) => {
-                  return (<div className="flex flex-col tab:flex-row lap:items-center justify-center">
+                  return (<div key={index} className="flex flex-col tab:flex-row lap:items-center justify-center">
 
                     <div className="p-7">
                       <img className="w-36 h-36 object-cover rounded-full" src={value.image}
@@ -331,11 +343,12 @@ function App() {
             <div
               className="grid grid-col-1 tab:grid-cols-2 lap:grid-cols-4 items-center justify-center justify-items-center gap-8">
 
-              {counter.map((value, index) => {
+              {finalCounter.map((value, index) => {
+                console.log(value)
                 return (
-                  <div className="text-center">
+                  <div key={index} className="text-center">
                     <div className="bg-secondary h-4 mb-10 "></div>
-                    <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5" data-target={value.target}>0</div>
+                    <div className="counter font-sans-m text-7xl font-bold leading-[86.4px] mb-5">{value.value}</div>
                     <h2 className="text-base font-semibold tracking-wider leading-[25.6px] mb-5 uppercase">{value.title}</h2>
                     <p className="text-base leading-[25.6px]">{value.description}</p>
                   </div>
