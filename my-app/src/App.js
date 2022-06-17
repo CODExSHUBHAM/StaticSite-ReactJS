@@ -123,6 +123,8 @@ function App() {
     )
   }
 
+  
+
   const submitForm = (e) => {
     e.preventDefault();
     setFormErrors(validation(formValues, checked));
@@ -154,6 +156,19 @@ function App() {
 
     return errors
   }
+
+  useEffect(()=>{
+
+    async function sendData(formValues){
+      const { data, error } = await supabase
+    .from('formData')
+    .insert([formValues])
+    console.log(data,error)
+    };
+    if(Object.keys(formErrors).length === 0 && submited ){
+      sendData(formValues)
+    };
+  },[formErrors , submited]);
 
   return (
     <div className="App">
