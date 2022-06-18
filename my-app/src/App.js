@@ -11,19 +11,19 @@ import { supabase } from './supabaseClient';
 
 function App() {
 
-  const [team, setTeam] = useState([])
-  const [features, setFeatures] = useState([])
-  const [testimonials, setTestimonials] = useState([])
-  const [counter, setCounter] = useState([])
-  const [finalCounter, setFinalCounter] = useState([])
-  const initialValues = { name: "", adress: "", email: "", message: "" }
-  const [formValues, setFormValues] = useState(initialValues)
-  const [formErrors, setFormErrors] = useState({})
+  const [team, setTeam] = useState([]);
+  const [features, setFeatures] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+  const [counter, setCounter] = useState([]);
+  const [finalCounter, setFinalCounter] = useState([]);
+  const initialValues = { name: "", adress: "", email: "", message: "" };
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
   const [checked, setChecked] = useState(false);
   const [submited, setSubmited] = useState(false);
 
   useEffect(() => {
-    async function getData() {
+    async function getTeam() {
       const { data, error } = await supabase
         .from('team')
         .select()
@@ -31,12 +31,9 @@ function App() {
       console.log(error)
       setTeam(data)
     }
+    getTeam()
 
-    getData()
-  }, [setTeam]);
-
-  useEffect(() => {
-    async function getData() {
+    async function getFeatures() {
       const { data, error } = await supabase
         .from('features')
         .select()
@@ -44,12 +41,9 @@ function App() {
       console.log(error)
       setFeatures(data)
     }
+    getFeatures()
 
-    getData()
-  }, [setFeatures]);
-
-  useEffect(() => {
-    async function getData() {
+    async function getTestimonials() {
       const { data, error } = await supabase
         .from('testimonials')
         .select()
@@ -57,12 +51,12 @@ function App() {
       console.log(error)
       setTestimonials(data)
     }
+    getTestimonials()
 
-    getData()
-  }, [setTestimonials]);
+  }, [setTeam, setFeatures, setTestimonials]);
 
   useEffect(() => {
-    async function getData() {
+    async function getCounterData() {
       const { data, error } = await supabase
         .from('counter')
         .select()
@@ -74,11 +68,11 @@ function App() {
       })
       setFinalCounter(tempCounter)
     }
+    getCounterData()
 
-    getData()
   }, [setCounter, setFinalCounter]);
 
-  useEffect(() => {
+  useEffect(()=>{
 
     const speed = 600;
 
@@ -88,12 +82,10 @@ function App() {
 
         const target = item.target;
         const count = item.value;
-
         const inc = Math.ceil(target / speed)
 
         if (count < target) {
           item.value = count + inc;
-
         }
         else {
           item.value = item.target
@@ -102,16 +94,16 @@ function App() {
         return item
 
       })
-
       setFinalCounter(tempCounter)
     }
-  }, [finalCounter, setFinalCounter]);
+
+  }, [setFinalCounter, finalCounter]);
 
   const valueChange = (e) => {
 
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-  }
+  };
 
   const checkBox = (e) => {
 
@@ -121,15 +113,13 @@ function App() {
     else (
       setChecked(false)
     )
-  }
-
-  
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
     setFormErrors(validation(formValues, checked));
     setSubmited(true);
-  }
+  };
 
   const validation = (values, checked) => {
     const errors = {}
@@ -155,20 +145,21 @@ function App() {
     }
 
     return errors
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    async function sendData(formValues){
+    async function sendData(formValues) {
       const { data, error } = await supabase
-    .from('formData')
-    .insert([formValues])
-    console.log(data,error)
+        .from('formData')
+        .insert([formValues])
+      console.log(data, error)
     };
-    if(Object.keys(formErrors).length === 0 && submited ){
+    if (Object.keys(formErrors).length === 0 && submited) {
       sendData(formValues)
     };
-  },[formErrors , submited]);
+    // eslint-disable-next-line
+  }, [formErrors, submited]);
 
   return (
     <div className="App">
