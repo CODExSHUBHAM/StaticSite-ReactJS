@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './App.css';
 import quote from '../src/Images/quote.svg';
 import waves from '../src/Images/waves.svg';
@@ -119,6 +119,7 @@ function App() {
     e.preventDefault();
     setFormErrors(validation(formValues, checked));
     setSubmited(true);
+    
   };
 
   const validation = (values, checked) => {
