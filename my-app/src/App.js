@@ -483,7 +483,7 @@ function App() {
                   <div className="mb-10">
                     <input name="terms" type="checkbox" checked={checked} onChange={checkBox} />
                     <label className="font-normal text-base leading-[25.6px]" htmlFor=""> I accept the <a
-                      className="text-link" href="https://stackoverflow.com/questions/58477604/react-p-is-not-defined-no-undef-in-component-file">Terms of Service</a></label>
+                      className="text-link" href="https://github.com/CODExSHUBHAM">Terms of Service</a></label>
                     <p className="text-red-600 font-thin">{formErrors.checked}</p>
                   </div>
 
