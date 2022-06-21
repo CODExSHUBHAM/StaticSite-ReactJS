@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import quote from '../src/Images/quote.svg';
 import waves from '../src/Images/waves.svg';
@@ -14,13 +14,13 @@ function App() {
   const [team, setTeam] = useState([]);
   const [features, setFeatures] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
-  const [counter, setCounter] = useState([]);
   const [finalCounter, setFinalCounter] = useState([]);
   const initialValues = { name: "", adress: "", email: "", message: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [checked, setChecked] = useState(false);
   const [submited, setSubmited] = useState(false);
+  const [isSubmitSucces, setIsSubmitSucess] = useState(null)
 
   useEffect(() => {
     async function getTeam() {
@@ -62,7 +62,7 @@ function App() {
         .select()
         .order('order', { ascending: true })
       console.log(error)
-      setCounter(data)
+      
       const tempCounter = data.map(item => {
         return { ...item, value: 0 }
       })
@@ -70,11 +70,11 @@ function App() {
     }
     getCounterData()
 
-  }, [setCounter, setFinalCounter]);
+  }, [ setFinalCounter]);
 
   useEffect(()=>{
-
-    const speed = 600;
+    console.log("hi")
+    const speed = 30;
 
     if (finalCounter[0] && (finalCounter[0].value !== finalCounter[0].target || finalCounter[1].value !== finalCounter[1].target || finalCounter[2].value !== finalCounter[2].target || finalCounter[3].value !== finalCounter[3].target)) {
 
@@ -155,6 +155,14 @@ function App() {
         .from('formData')
         .insert([formValues])
       console.log(data, error)
+      if(error){
+        setIsSubmitSucess(false)
+      }
+      else{
+        setIsSubmitSucess(true)
+        setFormValues(initialValues)
+        setChecked(false)
+      }
     };
     if (Object.keys(formErrors).length === 0 && submited) {
       sendData(formValues)
@@ -484,7 +492,8 @@ function App() {
                       className="bg-secondary text-white font-bold border-none py-3.5 px-8 cursor-pointer text-sm tracking-button leading-btn">
                       SUBMIT
                     </button>
-                    {Object.keys(formErrors).length === 0 && submited ? (<p className="mx-5 text-base text-green-500">We got your response, we'll get back to you shortly !!</p>) : (<p></p>)}
+                    {isSubmitSucces && (<p className="mx-5 text-base text-green-500">We got your response, we'll get back to you shortly !!</p>) }
+                    {isSubmitSucces === false &&  (<p className="mx-5 text-base text-red-500">Please try again later !!</p>) }
                   </div>
 
 
